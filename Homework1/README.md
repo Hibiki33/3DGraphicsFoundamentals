@@ -17,23 +17,23 @@ Qt一般会形成对象树，所创建的对象一般在堆区，当析构父类
 
 点击Create Project...
 
-![image-20220919172336677](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\创建1)
+![image-20220919172336677](Image\创建1.png)
 
 选择Widgets。
 
-![image-20220919172534596](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\创建2)
+![image-20220919172534596](Image\创建2.png)
 
 继续。
 
-![image-20220919172624950](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\创建3)
+![image-20220919172624950](Image\创建3.png)
 
 接下来有三个选项，默认创建的窗口类是`QMainWindow`，可以选择的基类有： `QWidget`、`QMainWindow`、`QDialog`，一个是单一的窗口，一个是主界面，一个是对话框，`MainWindow`比`Widget`多了一些常用的控件，例如菜单栏。
 
-![image-20220919172748900](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\创建4)
+![image-20220919172748900](Image\创建4.png)
 
 接下来一直下一步即可，最终生成：
 
-![image-20220919173027901](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\创建5)
+![image-20220919173027901](Image\创建5.png)
 
 1. `main.cpp`：如下
 
@@ -53,7 +53,7 @@ Qt一般会形成对象树，所创建的对象一般在堆区，当析构父类
 
 值得一提的是，Qt自带了help文档，可以查阅自己需要的功能（虽然是英文）。
 
-![image-20220919174916037](D:\3D Foundation\3DGraphicsFoundamentals\Homework1\帮助1)
+![image-20220919174916037](Image\帮助1.png)
 
 顺便一提`QtCreator`本身也是可以用来文本编辑的，只不过不太好用。
 
