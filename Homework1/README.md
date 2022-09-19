@@ -1,4 +1,13 @@
+# Homework 1
+
+内容来自于本人使用经验和网络，如有错误或者补充欢迎大家直接修改。
+
+.md里的图片需要将库加载到本地才能正常打开。
+
+在文本最后有关于面向对象的补充。
+
 ## Qt
+
 ### Qt基础知识
 
 #### 自动内存回收
@@ -14,6 +23,8 @@ Qt一般会形成对象树，所创建的对象一般在堆区，当析构父类
 - y以下为正方向。
 
 ### 创建项目
+
+只是展示Qt项目是怎样生成的，本次作业不会用到。
 
 点击Create Project...
 
@@ -103,7 +114,7 @@ Qt一般会形成对象树，所创建的对象一般在堆区，当析构父类
 
 ##### 创建椭圆
 
-1. 右键`App`创建`Elli.h`和`Elli.cpp`两个文件，依次写入：
+1. 右键`App`创建`Elli.h`和`Elli.cpp`两个文件（跳出是否脚本修改点击取消），依次写入：
 
 ```c++
 /*这是Elli.h*/
@@ -172,7 +183,7 @@ void MiniDraw::Creat_Action() {
 	//这行将刚刚声明的Action_Elli实例化为一个新的QAction类
 	connect(Action_Elli, &QAction::triggered, view_widget_, &ViewWidget::setElli);
     //connect()用于将槽连接
-	//这句话翻译一下就是当Action_Elli触发时，在窗口上可视化一个Elli
+	//这句话翻译一下就是当Action_Elli触发时，在窗口上可视化一个Elli类
 }
 
 void MiniDraw::Creat_ToolBar() {
@@ -181,9 +192,33 @@ void MiniDraw::Creat_ToolBar() {
 }
 ```
 
-4. 这样就可以进行椭圆操作了。
+4. 点击清除缓存并重新配置，再运行。这样就可以进行椭圆操作了。
 
 <img src="D:\3D Foundation\3DGraphicsFoundamentals\Homework1\Image\示例4.png" alt="image-20220919195625975" style="zoom:67%;" />
+
+##### 清除画布
+
+提供清除画布的代码，具体含义自己理解。
+
+```c++
+void ResetAll();			//添加在minidraw.h
+
+Action_Reset = new QAction(tr("&Reset"), this);
+connect(Action_Reset, &QAction::triggered, this, &MiniDraw::ResetAll);
+							//添加在minidraw.cpp
+
+void MiniDraw::ResetAll() {
+	view_widget_->clearAll();
+}							//添加在minidraw.cpp
+
+void clearAll();			//添加在viewwidget.h
+
+void ViewWidget::clearAll() {
+	shape_list_.clear();
+}							//添加在viewwidget.cpp
+```
+
+
 
 到这里，作业中：
 
@@ -191,3 +226,34 @@ void MiniDraw::Creat_ToolBar() {
 2. 每种图形需用类封装，需要从一个图形类继承。
 
 这两条应该已经可以尝试完成了。
+
+## 简单的面向对象
+
+我们学过的C语言是面向过程编程，对于一个变量（整形、字符串或是结构体），它的函数和变量都是分开的。
+
+面向对象是更符合人的思维的一种编程思想，我们称一个类为一个对象。比如人，它是一个对象，它有年龄，名字等“属性”，也有吃饭等”方法“（即属于对象的函数）。
+
+```java
+class People {
+    //属性
+ 	int age;
+    String name;
+    //方法
+    void eat() {
+        
+    }
+}
+```
+
+而且大多数情况下，对象有着**A is B**的继承关系，比如`Chinese is People`，所以对象间可以有继承关系。比如Chinese可以继承People的年龄性别等属性，也有比如说省份等自己的属性；继承吃饭的方法，也可以有使用筷子等自己的方法。
+
+```java
+class Chinese extends People {
+    String province;  
+    void useChopsticks() {
+        
+    }
+}
+```
+
+这就是面向对象的思维方式。
