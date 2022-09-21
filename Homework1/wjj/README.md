@@ -211,12 +211,21 @@ void MiniDraw::ResetAll() {
 	view_widget_->clearAll();
 }							//添加在minidraw.cpp
 
+pToolBar->addAction(Action_Reset);
+							//添加在minidraw.cpp
+
 void clearAll();			//添加在viewwidget.h
 
 void ViewWidget::clearAll() {
 	shape_list_.clear();
 }							//添加在viewwidget.cpp
 ```
+
+##### debug方法
+
+在需要debug的文件中添加`#include <qdebug.h>`头文件；
+
+然后在需要debug的位置用`qDebug() << 你需要观察的变量 << endl;`这行代码进行观察，通过变量的变化获取信息进行debug。
 
 
 
@@ -227,9 +236,18 @@ void ViewWidget::clearAll() {
 
 这两条应该已经可以尝试完成了。
 
+##### 栅格化方法
 
+放了两个文件供参考。
 
-更新了通过栅格化方法绘制直线的C++实现。
+##### 多边形的实现
+
+简单说一下polygon的实现（我自己的思路，不一定好）：
+
+1. 在polygon类里添加一个QLine的数组，Draw函数用便利数组并绘制的方式实现；
+2. 选择一定的事件进行触发，我的方式是通过单机确定点，并画线，通过右击结束；
+3. 在相应viewwidget中添加相应的判断条件；
+4. tip: 若想要鼠标松开时也能触发moveEvent，需要手动添加setMouseTracking(true)。
 
 
 
