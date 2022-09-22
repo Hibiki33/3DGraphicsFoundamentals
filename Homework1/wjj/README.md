@@ -238,7 +238,7 @@ void ViewWidget::clearAll() {
 
 ##### 栅格化方法
 
-放了两个文件供参考。
+补充了线段和椭圆的光栅化代码。
 
 ##### 多边形的实现
 
@@ -248,6 +248,22 @@ void ViewWidget::clearAll() {
 2. 选择一定的事件进行触发，我的方式是通过单机确定点，并画线，通过右击结束；
 3. 在相应viewwidget中添加相应的判断条件；
 4. tip: 若想要鼠标松开时也能触发moveEvent，需要手动添加setMouseTracking(true)。
+
+```c++
+void Poly::Draw(QPainter& painter) 
+{
+    painter.drawLine(tmp, end);				//tmp是我在poly类中设置的一个点，用来储存上一次的点，用于这次画线的起始点
+    int n = lineList.size();
+    for (int i = 0; i < n; i++) {
+        painter.drawLine(lineList[i]);
+    }
+}
+
+void Poly::set_Line(QLine ql)
+{
+    lineList.push_back(ql);
+}
+```
 
 
 
