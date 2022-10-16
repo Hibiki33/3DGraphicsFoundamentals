@@ -39,10 +39,7 @@ void main()
         float Displacement = texture(displacementmap, vs_out.TexCoord).r;
         vs_out.WorldPos += N * Displacement * displacement_coefficient;
         worldPos = vec4(vs_out.WorldPos, 1.0);
-    }
 
-    if(have_normal_and_displacement)
-    {
         // TODO: 2.1 计算模型在世界坐标系的法线，从而可以在顶点着色器中用法线贴图调整
         float c_step = 1.0;
 

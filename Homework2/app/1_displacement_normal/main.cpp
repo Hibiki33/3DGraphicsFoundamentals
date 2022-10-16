@@ -83,6 +83,7 @@ int main()
     gl::Program program(&vertex_shader, &fragment_shader);
 
     float ambient = 0.2f;
+    float specular = 0.8f;
     program.SetTex("color_texture", 0);
     program.SetTex("normalmap", 1);
     program.SetTex("displacementmap", 2);
@@ -90,6 +91,7 @@ int main()
     program.SetVecf3("point_light_pos", { 0,10,0 });
     program.SetVecf3("point_light_radiance", { 200,200,200 });
     program.SetFloat("ambient", ambient);
+    program.SetFloat("specular", specular);
 
     // 设置平面模型
     // ------------------------------------------------------------------

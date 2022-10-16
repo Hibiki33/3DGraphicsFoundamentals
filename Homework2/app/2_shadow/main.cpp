@@ -90,11 +90,13 @@ int main()
     gl::Program shadow_program(&p3_vs, &empty_fs);
 
     float ambient = 0.2f;
+    float specular = 0.8f;
     light_shadow_program.SetTex("color_texture", 0);
     light_shadow_program.SetTex("shadowmap", 1);
     light_shadow_program.SetVecf3("point_light_pos", { 0,10,0 });
     light_shadow_program.SetVecf3("point_light_radiance", { 200,200,200 });
     light_shadow_program.SetFloat("ambient", ambient);
+    light_shadow_program.SetFloat("specular", specular);
 
     // 加载小牛模型
     // ------------------------------------------------------------------

@@ -9,6 +9,8 @@ uniform vec3 point_light_pos;				// 点光源位置
 uniform vec3 point_light_radiance;			// 光线
 
 uniform float ambient;						// 环境光强度
+uniform float specular;						// 反射光强度
+
 uniform sampler2D color_texture;			// 纹理颜色
 uniform sampler2D normalmap;				// 法线贴图
 uniform bool have_normal_and_displacement;	// 是否加上法线贴图和置换贴图
@@ -64,7 +66,6 @@ void main() {
     float diffColor = max(dot(normal, lightDirect), 0.0);
     vec3 D = diffColor * lightColor;
 	// 高光
-	float specular = 0.5;
     vec3 reflectDirect = reflect(-lightDirect, normal);  
     float specColor = pow(max(dot(viewDirect, reflectDirect), 0.0), 32);
     vec3 S = specular * specColor * lightColor;
